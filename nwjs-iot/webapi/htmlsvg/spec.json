@@ -1,0 +1,8 @@
+{
+    "spec_category": "Graphics",
+    "spec_desc": "Html5 Inline SVG",
+    "spec_url": "https://www.w3.org/TR/html5/embedded-content-0.html#svg",
+    "test_origin": [
+        "tct-svg-html5-tests"
+    ]
+}

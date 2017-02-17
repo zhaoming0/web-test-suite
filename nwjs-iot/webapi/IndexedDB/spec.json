@@ -1,0 +1,8 @@
+{
+    "spec_category": "Storage",
+    "spec_desc": "Indexed Database API",
+    "spec_url": "https://www.w3.org/TR/IndexedDB/",
+    "test_origin": [
+        "https://github.com/w3c/web-platform-tests/tree/master/IndexedDB"
+    ]
+}

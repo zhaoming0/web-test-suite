@@ -1,0 +1,8 @@
+{
+    "spec_category": "Communication",
+    "spec_desc": "The History Interface",
+    "spec_url": "https://www.w3.org/TR/html5/browsers.html#the-history-interface",
+    "test_origin": [
+        "https://github.com/w3c/web-platform-tests/tree/master/html/browsers/history"
+    ]
+}

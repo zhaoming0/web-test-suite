@@ -1,0 +1,8 @@
+{
+    "spec_category": "Runtime and Packaging",
+    "spec_desc": "The app: URL Scheme",
+    "spec_url": "https://www.w3.org/TR/app-uri/",
+    "test_origin": [
+        "https://github.com/w3c/web-platform-tests/tree/master/app-uri"
+    ]
+}

@@ -1,0 +1,8 @@
+{
+    "spec_category": "Location",
+    "spec_desc": "Geolocation API Specification",
+    "spec_url": "https://www.w3.org/TR/geolocation-API/",
+    "test_origin": [
+        "https://github.com/w3c/web-platform-tests/tree/master/geolocation-API"
+    ]
+}

@@ -1,0 +1,8 @@
+{
+    "spec_category": "Storage",
+    "spec_desc": "File API: Directories and System",
+    "spec_url": "https://www.w3.org/TR/file-system-api/",
+    "test_origin": [
+        "tct-filesystemapi-w3c-tests"
+    ]
+}

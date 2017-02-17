@@ -1,0 +1,8 @@
+{
+    "spec_category": "DOM, Forms and Styles",
+    "spec_desc": "HTML Imports",
+    "spec_url": "https://www.w3.org/TR/html-imports/",
+    "test_origin": [
+        "https://github.com/w3c/web-platform-tests/tree/master/html-imports"
+    ]
+}

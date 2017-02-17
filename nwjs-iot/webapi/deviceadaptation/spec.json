@@ -1,0 +1,8 @@
+{
+    "spec_category": "DOM, Forms and Styles",
+    "spec_desc": "CSS Device Adaptation Module Level 1",
+    "spec_url": "https://www.w3.org/TR/css-device-adapt-1/",
+    "test_origin": [
+        "webapi-deviceadaptation-css3-tests"
+    ]
+}

@@ -1,0 +1,8 @@
+{
+    "spec_category": "Experimental",
+    "spec_desc": "TCP and UDP Socket API",
+    "spec_url": "https://www.w3.org/TR/raw-sockets/",
+    "test_origin": [
+        "webapi-rawsockets-w3c-tests"
+    ]
+}

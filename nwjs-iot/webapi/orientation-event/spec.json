@@ -1,0 +1,8 @@
+{
+    "spec_category": "Device",
+    "spec_desc": "DeviceOrientation Event Specification",
+    "spec_url": "https://www.w3.org/TR/orientation-event/",
+    "test_origin": [
+        "https://github.com/w3c/web-platform-tests/tree/master/orientation-event"
+    ]
+}

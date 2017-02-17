@@ -1,0 +1,8 @@
+{
+    "spec_category": "Networking & Storage",
+    "spec_desc": "Service Workers",
+    "spec_url": "https://www.w3.org/TR/service-workers/",
+    "test_origin": [
+        "https://github.com/w3c/web-platform-tests/tree/master/service-workers"
+    ]
+}

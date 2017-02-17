@@ -1,0 +1,8 @@
+{
+    "spec_category": "Storage",
+    "spec_desc": "Web SQL Database",
+    "spec_url": "https://www.w3.org/TR/webdatabase/",
+    "test_origin": [
+        "tct-webdatabase-w3c-tests"
+    ]
+}

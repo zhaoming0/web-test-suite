@@ -1,0 +1,8 @@
+{
+    "spec_category": "Security",
+    "spec_desc": "Cross-Origin Resource Sharing",
+    "spec_url": "https://www.w3.org/TR/cors/",
+    "test_origin": [
+        "https://github.com/w3c/web-platform-tests/tree/master/cors"
+    ]
+}

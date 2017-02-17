@@ -1,0 +1,8 @@
+{
+    "spec_category": "DOM, Forms and Styles",
+    "spec_desc": "CSS Text Module Level 3",
+    "spec_url": "https://www.w3.org/TR/css-text-3/",
+    "test_origin": [
+        "https://github.com/w3c/csswg-test/tree/master/css-text-3"
+    ]
+}
