@@ -1,0 +1,8 @@
+{
+    "spec_category": "Storage",
+    "spec_desc": "AppCache",
+    "spec_url": "https://www.w3.org/TR/html5/browsers.html#appcache",
+    "test_origin": [
+        "tct-appcache-html5-tests"
+    ]
+}

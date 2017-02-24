@@ -1,0 +1,8 @@
+{
+    "spec_category": "Experimental",
+    "spec_desc": "Presentation API",
+    "spec_url": "https://www.w3.org/TR/presentation-api/",
+    "test_origin": [
+        "https://github.com/w3c/web-platform-tests/tree/master/presentation-api"
+    ]
+}

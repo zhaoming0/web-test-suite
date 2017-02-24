@@ -1,0 +1,8 @@
+{
+    "spec_category": "DOM, Forms and Styles",
+    "spec_desc": "The Input Element",
+    "spec_url": "https://www.w3.org/TR/html5/forms.html#the-input-element",
+    "test_origin": [
+        "https://github.com/w3c/web-platform-tests/tree/master/html/semantics/forms/the-input-element"
+    ]
+}

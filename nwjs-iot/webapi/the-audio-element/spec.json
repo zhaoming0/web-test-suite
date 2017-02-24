@@ -1,0 +1,8 @@
+{
+    "spec_category": "Media",
+    "spec_desc": "The Audio Element",
+    "spec_url": "https://www.w3.org/TR/html5/embedded-content-0.html#the-audio-element",
+    "test_origin": [
+        "https://github.com/w3c/web-platform-tests/tree/master/html/semantics/embedded-content/the-audio-element"
+    ]
+}

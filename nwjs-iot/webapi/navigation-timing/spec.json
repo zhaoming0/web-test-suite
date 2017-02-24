@@ -1,0 +1,8 @@
+{
+    "spec_category": "Performance and Optimization",
+    "spec_desc": "Navigation Timing",
+    "spec_url": "https://www.w3.org/TR/navigation-timing/",
+    "test_origin": [
+        "https://github.com/w3c/web-platform-tests/tree/master/navigation-timing"
+    ]
+}

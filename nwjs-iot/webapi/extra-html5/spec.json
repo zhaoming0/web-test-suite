@@ -1,0 +1,14 @@
+{
+    "spec_category": "W3C_EXTRAHTML5",
+    "spec_desc": "Extra HTML5",
+    "spec_url": "https://www.w3.org/TR/html5/",
+    "test_origin": [
+        "https://github.com/w3c/web-platform-tests/tree/master/html/infrastructure/common-dom-interfaces/collections",
+        "https://github.com/w3c/web-platform-tests/tree/master/html/dom/documents/resource-metadata-management",
+        "https://github.com/w3c/web-platform-tests/tree/master/html/editing/editing-0",
+        "https://github.com/w3c/web-platform-tests/tree/master/html/editing/the-hidden-attribute",
+        "https://github.com/w3c/web-platform-tests/tree/master/html/semantics/forms/the-textarea-element",
+        "https://github.com/w3c/web-platform-tests/tree/master/html/semantics/grouping-content",
+        "https://github.com/w3c/web-platform-tests/tree/master/html/syntax/serializing-html-fragments"
+    ]
+}

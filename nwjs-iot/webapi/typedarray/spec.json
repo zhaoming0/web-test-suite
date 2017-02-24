@@ -1,0 +1,8 @@
+{
+    "spec_category": "Supplementary",
+    "spec_desc": "Typed Arrays",
+    "spec_url": "http://www.ecma-international.org/ecma-262/6.0/#sec-typedarray-objects",
+    "test_origin": [
+        "https://github.com/w3c/web-platform-tests/tree/master/typedarrays"
+    ]
+}

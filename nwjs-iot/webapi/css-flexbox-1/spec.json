@@ -1,0 +1,8 @@
+{
+    "spec_category": "DOM, Forms and Styles",
+    "spec_desc": "CSS Flexible Box Layout Module Level 1",
+    "spec_url": "https://www.w3.org/TR/css-flexbox-1/",
+    "test_origin": [
+        "https://github.com/w3c/csswg-test/tree/master/css-flexbox-1"
+    ]
+}

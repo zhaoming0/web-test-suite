@@ -1,0 +1,11 @@
+{
+    "spec_category": "DOM, Forms and Styles",
+    "spec_desc": "The Forms Element",
+    "spec_url": "https://www.w3.org/TR/html5/forms.html#the-form-element",
+    "test_origin": [
+        "https://github.com/w3c/web-platform-tests/tree/master/html/semantics/forms/the-form-element",
+        "https://github.com/w3c/web-platform-tests/tree/master/html/semantics/forms/resetting-a-form",
+        "https://github.com/w3c/web-platform-tests/tree/master/html/semantics/forms/the-fieldset-element",
+        "https://github.com/w3c/web-platform-tests/tree/master/html/semantics/forms/the-label-element"
+    ]
+}

@@ -1,0 +1,8 @@
+{
+    "spec_category": "Device",
+    "spec_desc": "Touch Events",
+    "spec_url": "https://www.w3.org/TR/touch-events/",
+    "test_origin": [
+        "https://github.com/w3c/web-platform-tests/tree/master/touch-events"
+    ]
+}

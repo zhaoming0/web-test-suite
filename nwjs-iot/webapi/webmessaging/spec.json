@@ -1,0 +1,8 @@
+{
+    "spec_category": "Communication",
+    "spec_desc": "HTML5 Web Messaging",
+    "spec_url": "https://www.w3.org/TR/webmessaging/",
+    "test_origin": [
+        "https://github.com/w3c/web-platform-tests/tree/master/webmessaging"
+    ]
+}

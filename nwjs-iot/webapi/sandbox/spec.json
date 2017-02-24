@@ -1,0 +1,9 @@
+{
+    "spec_category": "Security",
+    "spec_desc": "The Iframe Element",
+    "spec_url": "https://www.w3.org/TR/html5/embedded-content-0.html#the-iframe-element",
+    "test_origin": [
+        "https://github.com/w3c/web-platform-tests/tree/master/html/browsers/sandboxing",
+        "https://github.com/w3c/web-platform-tests/tree/master/html/semantics/embedded-content/the-iframe-element"
+    ]
+}

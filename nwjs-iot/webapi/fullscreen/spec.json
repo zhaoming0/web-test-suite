@@ -1,0 +1,8 @@
+{
+    "spec_category": "Supplementary",
+    "spec_desc": "Fullscreen API",
+    "spec_url": "https://fullscreen.spec.whatwg.org/",
+    "test_origin": [
+        "https://github.com/w3c/web-platform-tests/tree/master/fullscreen"
+    ]
+}

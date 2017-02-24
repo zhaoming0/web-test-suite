@@ -1,0 +1,8 @@
+{
+    "spec_category": "Media",
+    "spec_desc": "Web Audio API",
+    "spec_url": "https://www.w3.org/TR/webaudio/",
+    "test_origin": [
+        "https://github.com/w3c/web-platform-tests/tree/master/webaudio"
+    ]
+}

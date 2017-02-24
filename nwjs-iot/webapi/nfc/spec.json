@@ -1,0 +1,8 @@
+{
+    "spec_category": "Communication",
+    "spec_desc": "Web NFC API",
+    "spec_url": "https://www.w3.org/TR/nfc/",
+    "test_origin": [
+        "webapi-nfc-w3c-tests"
+    ]
+}

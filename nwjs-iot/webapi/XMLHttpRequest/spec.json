@@ -1,0 +1,8 @@
+{
+    "spec_category": "Communication",
+    "spec_desc": "XMLHttpRequest Level 1",
+    "spec_url": "https://www.w3.org/TR/XMLHttpRequest/",
+    "test_origin": [
+        "https://github.com/w3c/web-platform-tests/tree/master/XMLHttpRequest"
+    ]
+}

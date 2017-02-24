@@ -1,0 +1,8 @@
+{
+    "spec_category": "UI",
+    "spec_desc": "Web Notifications",
+    "spec_url": "https://www.w3.org/TR/notifications/",
+    "test_origin": [
+        "https://github.com/w3c/web-platform-tests/tree/master/notifications"
+    ]
+}

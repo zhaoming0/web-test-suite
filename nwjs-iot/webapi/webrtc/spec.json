@@ -1,0 +1,8 @@
+{
+    "spec_category": "Communication",
+    "spec_desc": "WebRTC 1.0: Real-time Communication Between Browsers",
+    "spec_url": "https://www.w3.org/TR/webrtc/",
+    "test_origin": [
+        "https://github.com/w3c/web-platform-tests/tree/master/webrtc"
+    ]
+}

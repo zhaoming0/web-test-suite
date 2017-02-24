@@ -1,0 +1,8 @@
+{
+    "spec_category": "Graphics",
+    "spec_desc": "HTML Canvas 2D Context",
+    "spec_url": "https://www.w3.org/TR/2dcontext/",
+    "test_origin": [
+        "https://github.com/w3c/web-platform-tests/tree/master/2dcontext"
+    ]
+}

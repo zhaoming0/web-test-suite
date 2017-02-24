@@ -1,0 +1,8 @@
+{
+    "spec_category": "Device",
+    "spec_desc": "The Screen Orientation API",
+    "spec_url": "https://www.w3.org/TR/screen-orientation/",
+    "test_origin": [
+        "https://github.com/w3c/web-platform-tests/tree/master/screen-orientation"
+    ]
+}

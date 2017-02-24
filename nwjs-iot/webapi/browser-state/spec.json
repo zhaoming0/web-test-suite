@@ -1,0 +1,8 @@
+{
+    "spec_category": "Device",
+    "spec_desc": "Browser state",
+    "spec_url": "https://www.w3.org/TR/html5/browsers.html#browser-state",
+    "test_origin": [
+        "https://github.com/w3c/web-platform-tests/tree/master/html/browsers/offline/browser-state"
+    ]
+}

@@ -1,0 +1,8 @@
+{
+    "spec_category": "Supplementary",
+    "spec_desc": "WebGL",
+    "spec_url": "https://www.khronos.org/registry/webgl/specs/latest/1.0/",
+    "test_origin": [
+        "https://github.com/w3c/web-platform-tests/tree/master/webgl"
+    ]
+}

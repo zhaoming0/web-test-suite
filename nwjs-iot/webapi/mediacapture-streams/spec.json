@@ -1,0 +1,8 @@
+{
+    "spec_category": "Media",
+    "spec_desc": "Media Capture and Streams",
+    "spec_url": "https://www.w3.org/TR/mediacapture-streams/",
+    "test_origin": [
+        "https://github.com/w3c/web-platform-tests/tree/master/mediacapture-streams"
+    ]
+}

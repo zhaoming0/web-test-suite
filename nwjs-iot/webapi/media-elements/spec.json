@@ -1,0 +1,8 @@
+{
+    "spec_category": "Media",
+    "spec_desc": "Media Element",
+    "spec_url": "https://www.w3.org/TR/html5/embedded-content-0.html#media-elements",
+    "test_origin": [
+        "https://github.com/w3c/web-platform-tests/tree/master/html/semantics/embedded-content/media-elements"
+    ]
+}

@@ -1,0 +1,8 @@
+{
+    "spec_category": "Experimental",
+    "spec_desc": "Gamepad",
+    "spec_url": "https://www.w3.org/TR/gamepad/",
+    "test_origin": [
+        "https://github.com/w3c/web-platform-tests/tree/master/gamepad"
+    ]
+}

@@ -1,0 +1,8 @@
+{
+    "spec_category": "Device",
+    "spec_desc": "Battery Status API",
+    "spec_url": "https://www.w3.org/TR/battery-status/",
+    "test_origin": [
+        "https://github.com/w3c/web-platform-tests/tree/master/battery-status"
+    ]
+}

@@ -1,0 +1,8 @@
+{
+    "spec_category": "DOM, Forms and Styles",
+    "spec_desc": "Dom/JS related HTML Enhancements",
+    "spec_url": "https://www.w3.org/TR/html5/infrastructure.html#common-dom-interfaces",
+    "test_origin": [
+        "https://github.com/w3c/web-platform-tests/tree/master/html/dom/documents/dom-tree-accessors"
+    ]
+}

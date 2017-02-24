@@ -1,0 +1,8 @@
+{
+    "spec_category": "Media",
+    "spec_desc": "Web Speech API Specification",
+    "spec_url": "https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html",
+    "test_origin": [
+        "webapi-webspeech-w3c-tests"
+    ]
+}

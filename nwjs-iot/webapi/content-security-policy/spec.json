@@ -1,0 +1,8 @@
+{
+    "spec_category": "Security",
+    "spec_desc": "Content Security Policy Level 3",
+    "spec_url": "https://www.w3.org/TR/CSP/",
+    "test_origin": [
+        "https://github.com/w3c/web-platform-tests/tree/master/content-security-policy"
+    ]
+}
