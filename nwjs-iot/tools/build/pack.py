@@ -32,6 +32,14 @@ import os
 import json
 import shutil
 
+build_dir = os.path.dirname(os.path.abspath(__file__))
+nwjs_iot_dir = os.path.dirname(os.path.dirname(build_dir))
+nwjs_test_suite = 'nwjs_test_suite'
+nwjs_test_suite_dir = os.path.join(build_dir, nwjs_test_suite)
+
+# print(build_dir)
+# print(nwjs_iot_dir)
+
 def copytree(src, dst, symlinks=False, ignore=None):
     for item in os.listdir(src):
         s = os.path.join(src, item)
@@ -44,39 +52,37 @@ def copytree(src, dst, symlinks=False, ignore=None):
 def pack_webapi_tests(package_list_file):
     '''Collect all the WebAPI test case files and copy to the webapi directory.
     '''
-    pwd = os.getcwd()
-    top_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    webapi_dir = os.path.join(top_dir, 'webapi')
-    with open(package_list_file) as fp:
-        package_list = json.load(fp)
+    global build_dir
+    global nwjs_iot_dir
+    global nwjs_test_suite
+    global nwjs_test_suite_dir
 
-    test_suite_dir = 'nwjs_test_suite'
-    test_suite_zip = test_suite_dir + '.zip'
-    nwjs_webapi_dir = os.path.join(test_suite_dir, 'webapi')
+    nwjs_test_suite_zip = nwjs_test_suite_dir + '.zip'
+    if os.path.exists(nwjs_test_suite_zip):
+        print('removing ' + nwjs_test_suite_zip)
+        os.remove(nwjs_test_suite_zip)
+    if os.path.exists(nwjs_test_suite_dir):
+        print('removing ' + nwjs_test_suite_dir)
+        shutil.rmtree(nwjs_test_suite_dir)
 
-    if os.path.exists(test_suite_zip):
-        os.remove(test_suite_zip)
-
-    if os.path.exists(test_suite_dir):
-        shutil.rmtree(test_suite_dir)
-
-    shutil.copytree(webapi_dir, '{0}/{1}'.format(pwd, nwjs_webapi_dir))
+    webapi_dir = os.path.join(nwjs_iot_dir, 'webapi')
+    nwjs_webapi_dir = os.path.join(nwjs_test_suite_dir, 'webapi')
+    shutil.copytree(webapi_dir, nwjs_webapi_dir)
 
     csswg_cp_dirs = ('support', 'reference')
     web_platform_cp_dirs = ('common', 'images', 'media', 'resources')
-
     for cp_dir in csswg_cp_dirs:
+        print('copying csswg-test/{0} to {1}/{0}'.format(cp_dir, nwjs_webapi_dir, cp_dir))
         shutil.copytree('csswg-test/{0}'.format(cp_dir), 
                         '{0}/{1}'.format(nwjs_webapi_dir, cp_dir))
-
     for cp_dir in web_platform_cp_dirs:
+        print('copying web-platform-tests/{0} to {1}/{0}'.format(cp_dir, nwjs_webapi_dir, cp_dir))
         shutil.copytree('web-platform-tests/{0}'.format(cp_dir), 
                         '{0}/{1}'.format(nwjs_webapi_dir, cp_dir))
 
+    with open(package_list_file) as fp:
+        package_list = json.load(fp)
     for folder_name in sorted(package_list.get('package_list')):
-        print('#' * 80)
-        print('#' + folder_name)
-
         spec = None
         spec_file = os.path.join(nwjs_webapi_dir, folder_name, 'spec.json')
         if not os.path.exists(spec_file):
@@ -103,7 +109,7 @@ def pack_webapi_tests(package_list_file):
                 from_dir = os.path.join('crosswalk-test-suite', 'webapi', from_url, folder_name)
                 if not os.path.exists(from_dir) and 'htmlsvg' in from_dir:
                     from_dir = from_dir.replace('htmlsvg', 'svg')
-
+            print('copying {0} to {1}'.format(from_dir, nwjs_webapi_dir))
             if not from_dir.startswith('crosswalk-test-suite'):
                 if len(from_repo_urls) == 1:
                     copytree(from_dir, '{0}/{1}'.format(nwjs_webapi_dir, folder_name))
@@ -111,9 +117,50 @@ def pack_webapi_tests(package_list_file):
                     last_part = from_dir.split('/')[-1]
                     shutil.copytree(from_dir, '{0}/{1}/{2}'.format(nwjs_webapi_dir, folder_name, last_part))
 
-        print('#' * 80)
-    shutil.make_archive(test_suite_dir, 'zip', test_suite_dir)
+
+def pack_nwjs_tests():
+    '''
+    Copy nw.js/tests to nwjs_test_suite/
+    '''
+    global build_dir
+    global nwjs_test_suite_dir
+    assert os.path.exists(nwjs_test_suite_dir), 'nwjs_test_suite directory does not exist!'
+    
+    nwjs_upstream_test_dir = os.path.join(build_dir, 'nw.js', 'test')    
+    upstream_dir = os.path.join(nwjs_test_suite_dir, 'nwjsapi', 'upstream')
+    if not os.path.exists(upstream_dir):
+        os.makedirs(upstream_dir)
+
+    print('copying nw.js upstream test')
+    shutil.copytree(nwjs_upstream_test_dir, 
+                    os.path.join(upstream_dir, 'test'))
+
+
+def pack_webqa_tests():
+    '''
+    Copy WebQA tests(usecase and samplepp) to nwjs_test_suite
+    '''
+    global nwjs_iot_dir
+    global nwjs_test_suite_dir
+    assert os.path.exists(nwjs_test_suite_dir), 'nwjs_test_suite directory does not exist!'
+
+    usecase_dir = os.path.join(nwjs_iot_dir, 'usecase')
+    sampleapp_dir = os.path.join(nwjs_iot_dir, 'sampleapp')
+
+    print('copying usecase test suite')
+    shutil.copytree(usecase_dir, 
+                    os.path.join(nwjs_test_suite_dir, 'usecase'))
+    print('copying sampleapp test suite')
+    shutil.copytree(sampleapp_dir, 
+                    os.path.join(nwjs_test_suite_dir, 'sampleapp'))
+    os.chdir(build_dir)
 
 
 if __name__ == '__main__':
     pack_webapi_tests('package_list.json')
+    pack_nwjs_tests()
+    pack_webqa_tests()
+
+    print('Archiving...')
+    shutil.make_archive(nwjs_test_suite, 'zip', nwjs_test_suite_dir)
+    print('Done.')

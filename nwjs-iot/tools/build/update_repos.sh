@@ -40,7 +40,14 @@ WEB_PLATFORM_TESTS_URL="http://github.com/w3c/web-platform-tests.git"
 NWJS="nw.js"
 NWJS_URL="http://github.com/nwjs/nw.js.git"
 
-function update_w3c_repo {
+DEMOS="demos"
+DEMOS_URL="https://github.com/crosswalk-project/crosswalk-demos.git"
+HEXGL="HexGL"
+HEXGL_URL="https://github.com/BKcore/HexGL.git"
+SAMPLES="samples"
+SAMPLES_URL="http://github.com/crosswalk-project/crosswalk-samples.git"
+
+function update_recursive_repo {
     repo=$1
     url=$2
 
@@ -54,7 +61,7 @@ function update_w3c_repo {
     fi
 }
 
-function update_cts_repo {
+function update_plain_repo {
     repo=$1
     url=$2
 
@@ -67,20 +74,8 @@ function update_cts_repo {
     fi
 }
 
-function update_nwjs_repo {
-    repo=$1
-    url=$2
 
-    if [ ! -d $repo ]; then
-        git clone $url
-    else
-        cd $repo
-        git pull
-        cd $TOP_DIR
-    fi
-}
-
-update_w3c_repo $CSSWG_TEST $CSSWG_TEST_URL
-update_w3c_repo $WEB_PLATFORM_TESTS $WEB_PLATFORM_TESTS_URL
-update_cts_repo $CTS $CTS_URL
-update_nwjs_repo $NWJS $NWJS_URL
+update_recursive_repo $CSSWG_TEST $CSSWG_TEST_URL
+update_recursive_repo $WEB_PLATFORM_TESTS $WEB_PLATFORM_TESTS_URL
+update_plain_repo $CTS $CTS_URL
+update_plain_repo $NWJS $NWJS_URL
