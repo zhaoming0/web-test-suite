@@ -74,8 +74,15 @@ function update_plain_repo {
     fi
 }
 
+function update_sampleapp() {
+    cd $TOP_DIR/../../sampleapp
+    python setup_repos.py
+    cd $TOP_DIR
+}
 
 update_recursive_repo $CSSWG_TEST $CSSWG_TEST_URL
 update_recursive_repo $WEB_PLATFORM_TESTS $WEB_PLATFORM_TESTS_URL
 update_plain_repo $CTS $CTS_URL
 update_plain_repo $NWJS $NWJS_URL
+
+update_sampleapp
