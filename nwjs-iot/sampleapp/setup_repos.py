@@ -44,7 +44,8 @@ def clone_projects():
              'HexGL',
              [
              ['HexGL', '{"name": "HexGL", \n "main": "index.html"}']
-             ]
+             ],
+             'plainrepo'
             ]
     samples = ['https://github.com/crosswalk-project/crosswalk-samples.git',
                'samples',
@@ -52,46 +53,66 @@ def clone_projects():
                ['samples/simd-mandelbrot', '{"name": "SIMD", \n "main": "index.html"}'],
                ['samples/space-dodge-game/base', '{"name": "SpaceDodge", \n "main": "index.html"}'],
                ['samples/webgl', '{"name": "WebGLSample", \n "main": "index.html"}'],
-               ]
+               ],
+               'plainrepo'
               ]
     demos = ['https://github.com/crosswalk-project/crosswalk-demos.git',
              'demos',
              [
              ['demos/MemoryGame/src', '{"name": "MemoryGame", \n "main": "app/index.html"}']
-             ]
+             ],
+             'recursiverepo'
             ]
     projects = [hexgl, samples, demos]
 
     for project in projects:
-        print "Clone into %s." %  project[1]
-        status = commands.getstatusoutput("git clone %s %s" % (project[0], project[1]))
-        if status[0] == 0:
-            print "Clone into submodule repos."
-            os.chdir(project[1])
-            tpstatus = commands.getstatusoutput(submodule_cmd)
-            if tpstatus[0] == 0:
-                os.chdir(CONST_PATH)
-                print "Clone into %s done." % project[1]
-                for sample in project[2]:
-                    print "Create %s/package.json." % sample[0]
-                    create_pkg_file(sample[0], sample[1])
+        repo_dir = os.path.join(CONST_PATH, project[1])
+        # print(repo_dir)
+        if os.path.exists(repo_dir):
+            print('Repository %s already exists, update it.' % project[1])
+            os.chdir(repo_dir)
+            if project[3] == 'plainrepo':
+                update_cmd = 'git pull'
             else:
-                print "Clone into %s failed." % project[1]
-                print tpstatus[1]
-                sys.exit(1)
+                update_cmd = 'git submodule update'
+            os.system(update_cmd)
         else:
-            print "Clone into %s failed." % project[1]
-            print status[1]
-            sys.exit(1)
+            print('Repository %s not found, clone it.' % project[1])
+            print("Clone into %s." %  project[1])
+            status = commands.getstatusoutput("git clone %s %s" % (project[0], project[1]))
+            if status[0] == 0:
+                print("Clone into submodule repos.")
+                os.chdir(project[1])
+                tpstatus = commands.getstatusoutput(submodule_cmd)
+                if tpstatus[0] == 0:
+                    os.chdir(CONST_PATH)
+                    print("Clone into %s done." % project[1])
+                else:
+                    print("Clone into %s failed." % project[1])
+                    print(tpstatus[1])
+                    sys.exit(1)
+            else:
+                print("Clone into %s failed." % project[1])
+                print(status[1])
+                sys.exit(1)
+        
+        os.chdir(CONST_PATH)   
+        print(os.getcwd())
+        for sample in project[2]:
+            print("Create %s/package.json." % sample[0])
+            create_pkg_file(sample[0], sample[1])        
      
 def create_pkg_file(path, cmd):
     try:
+
         f=open("%s/package.json" % path, "w")
         f.write(cmd)
         f.close()
-        print "Create %s/package.json done." % path
-    except:
-        print "Create %s/package.json failed." % path
+
+        print("Create %s/package.json done." % path)
+    except Exception as e:
+        print(e)
+        print("Create %s/package.json failed." % path)
         sys.exit(1)
 
 def main():
