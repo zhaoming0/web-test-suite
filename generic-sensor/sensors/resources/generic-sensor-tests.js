@@ -200,10 +200,6 @@ function runGenericSensorOnerror(sensorType) {
 }
 
 function runSensorFrequency(sensorType) {
-  test(() => {
-    assert_throws(new RangeError(), () => new sensorType({frequency: -60}));
-  }, "negative frequency causes exception from constructor");
-
   async_test(t => {
     let fastSensor = new sensorType({frequency: 30});
     let slowSensor = new sensorType({frequency: 9});
