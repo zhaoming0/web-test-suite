@@ -50,7 +50,6 @@ def clone_projects():
     samples = ['https://github.com/crosswalk-project/crosswalk-samples.git',
                'samples',
                [
-               ['samples/simd-mandelbrot', '{"name": "SIMD", \n "main": "index.html"}'],
                ['samples/space-dodge-game/base', '{"name": "SpaceDodge", \n "main": "index.html"}'],
                ['samples/webgl', '{"name": "WebGLSample", \n "main": "index.html"}'],
                ],
