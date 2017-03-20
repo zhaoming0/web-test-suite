@@ -5,7 +5,6 @@ This test suite is for testing sample app on NW.js for IoT Linux
 ## Precondition
 
 1. $ git clone https://github.com/crosswalk-project/crosswalk-samples.git ./samples
-   $ echo -e '{"name": "SIMD", \n "main": "index.html"}' > ./samples/simd-mandelbrot/package.json
    $ echo -e '{"name": "SpaceDodge", \n "main": "index.html"}' > ./samples/space-dodge-game/base/package.json
    $ echo -e '{"name": "WebGLSample", \n "main": "index.html"}' > ./samples/webgl/package.json
 
@@ -76,23 +75,13 @@ This test suite is for testing sample app on NW.js for IoT Linux
 
    $ demos/MemoryGame/src/.
 
-
-6. simd-mandelbrot
-
-   Open terminal command window to run the following command. Click the "Start", wait a minute and remember the changing
-   number, click "Turn On SIMD", Re-click "Turn Off SIMD", then click "Stop". Check if the button value from
-   "Turn On SIMD" changes to "Turn Off SIMD", and current number is 1.5 times or more after click "Turn On SIMD".
-
-   $ samples/simd-mandelbrot/.
-
-
-7. space-dodge-game
+6. space-dodge-game
 
    Open terminal command window to run the following command, and test if all buttons and function work well.
 
    $ samples/space-dodge-game/base/.
 
-8. webgl
+7. webgl
 
    Open terminal command window to run the following command, and test if display a 3D box is rotating.
 

@@ -139,8 +139,6 @@
     <set background="brand-success3" icon="glyphicon-adjust" name="Experimental API">
       <testcase component="Use Cases/WebAPI" execution_type="manual" id="Presentation" purpose="Presentation">
       </testcase>
-      <testcase component="Use Cases/WebAPI" execution_type="manual" id="SIMD" purpose="SIMD">
-      </testcase>
       <testcase component="Use Cases/WebAPI" execution_type="manual" id="WifiDirect" purpose="WifiDirect">
       </testcase>
     </set>
