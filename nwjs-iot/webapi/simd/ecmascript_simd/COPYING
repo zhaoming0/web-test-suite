@@ -1,9 +1,0 @@
-This test suite comes from
-https://github.com/tc39/ecmascript_simd/commit/68644ec611cbf97453afc595539cf8bebca2614d
-with some modification:
-
-* The `load_stroe_test.html` was modified from
-  https://github.com/tc39/ecmascript_simd/blob/master/src/ecmascript_simd_tests.js
-* Add `completion_callback` handle to `qunit.js`.
-
-Please see the LICENSE.txt for the license terms and conditions.
