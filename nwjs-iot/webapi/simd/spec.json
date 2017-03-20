@@ -1,8 +1,0 @@
-{
-    "spec_category": "Experimental",
-    "spec_desc": "SIMD",
-    "spec_url": "https://tc39.github.io/ecmascript_simd/#simd",
-    "test_origin": [
-        "webapi-simd-nonw3c-tests"
-    ]
-}

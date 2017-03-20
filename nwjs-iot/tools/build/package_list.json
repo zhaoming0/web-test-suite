@@ -28,7 +28,6 @@
         "webgl",
         "fullscreen",
         "typedarray",
-        "simd",
         "eventsource",
         "animation-timing",
         "battery-status",
