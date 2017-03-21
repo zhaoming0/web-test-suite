@@ -1,0 +1,5 @@
+{
+  "name":"nodejs-modules-debugging",
+  "main":"index.html",
+  "chromium-args":"--mixed-context"
+}
