@@ -54,7 +54,8 @@ function run() {
   for (var i = 0; i < orientations.length; i++) {
     if (orientations[i].checked) {
       main(orientations[i].value);
-      document.getElementById("error").innerHTML += " " + orientations[i].value;
+      document.getElementById("name").innerHTML += " " + orientations[i].value;
+      document.getElementById("info").style.display = "block";
       flag = false;
     }
   }
