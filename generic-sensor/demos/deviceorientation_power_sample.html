@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2017 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+<meta name="description" content="Sensor info">
+<title>DeviceOrientation power consumption test</title>
+<div id="error" style="color:red"></div><br>
+
+Device Orientation API: <br>
+<label><input type="checkbox" name="orientations" value="DeviceMotion" />DeviceMotion</label><br>
+<label><input type="checkbox" name="orientations" value="DeviceOrientation" />DeviceOrientation</label><br>
+
+<input type="button" id="start" value="Start" onClick="javascript:run()">
+
+<p id="info" hidden>
+Current Information:<br>
+
+Orientation:<span id="name"></span><br>
+</p>
+<script>
+
+function run() {
+  document.getElementById("error").innerHTML = "";
+
+  var orientations = document.getElementsByName("orientations");
+  var flag = true;
+
+  for (var i = 0; i < orientations.length; i++) {
+    if (orientations[i].checked) {
+      main(orientations[i].value);
+      document.getElementById("error").innerHTML += " " + orientations[i].value;
+      flag = false;
+    }
+  }
+
+  if (flag) {
+    document.getElementById("error").innerHTML = "There is no orientation checked";
+    return;
+  }
+
+  document.getElementById("start").disabled=true;
+}
+
+function device_motion() {
+  var acceleration_x,
+      acceleration_y,
+      acceleration_z,
+      accelerationIncludingGravity_x,
+      accelerationIncludingGravity_y,
+      accelerationIncludingGravity_z,
+      rotationRate_alpha,
+      rotationRate_beta,
+      rotationRate_gamma;
+
+  window.ondevicemotion = function(event) {
+    acceleration_x = event.acceleration.x;
+    acceleration_y = event.acceleration.y;
+    acceleration_z = event.acceleration.z;
+    accelerationIncludingGravity_x = event.accelerationIncludingGravity.x;
+    accelerationIncludingGravity_y = event.accelerationIncludingGravity.y;
+    accelerationIncludingGravity_z = event.accelerationIncludingGravity.z;
+    rotationRate_alpha = event.rotationRate.alpha;
+    rotationRate_beta = event.rotationRate.beta;
+    rotationRate_gamma = event.rotationRate.gamma;
+  };
+}
+
+function device_orientation() {
+  var event_alpha,
+      event_beta,
+      event_gamma,
+      event_absolute;
+
+  window.ondeviceorientation = function(event) {
+    event_alpha = event.alpha;
+    event_beta = event.beta;
+    event_gamma = event.gamma;
+    event_absolute = event.absolute;
+  };
+}
+
+function main(orientation_name) {
+  switch (orientation_name) {
+  case "DeviceMotion":
+    if ('ondevicemotion' in window) {
+      device_motion();
+    }
+    break;
+  case "DeviceOrientation":
+    if ('ondeviceorientation' in window) {
+      device_orientation();
+    }
+    break;
+  default:
+    document.getElementById("error").innerHTML = "There is no " + sensor_name + " in window";
+    return;
+  }
+}
+
+</script>
