@@ -117,16 +117,15 @@ dictionary NFCWatchOptions {
 </pre>
 
 <script>
-(function() {
-  "use strict";
-  var idl_array = new IdlArray();
-  idl_array.add_untested_idls(document.getElementById('idl').textContent);
-  idl_array.add_idls(document.getElementById('web-nfc').textContent);
-
-  idl_array.add_objects({NFC: ["navigator.nfc"]});
-  idl_array.test();
-  done();
-})();
+setup(() => {
+   "use strict";
+    var idl_array = new IdlArray();
+    idl_array.add_untested_idls(document.getElementById('idl').textContent);
+    idl_array.add_idls(document.getElementById('web-nfc').textContent);
+    idl_array.add_objects({NFC: ["navigator.nfc"]});
+    idl_array.test();
+    done();
+}, {explicit_done: true});
 </script>
 </body>
 </html>
