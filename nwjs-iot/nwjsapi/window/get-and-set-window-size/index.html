@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2017 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<meta charset="utf-8">
+<title>Get And Set Window Size</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="author" title="zhang xiaoyux" href="mailto:xiaoyux.zhang@intel.com">
+<link rel="help" href="http://docs.nwjs.io/en/latest/References/Window/#winwidth">
+<link rel="help" href="http://docs.nwjs.io/en/latest/References/Window/#winheight">
+<link rel="help" href="http://docs.nwjs.io/en/latest/References/Window/#winresizetowidth-height">
+<p>
+  <strong>Test Steps:</strong>
+</p>
+<ol>
+  <li>Click "Get Size" button to get current size.</li>
+  <li>Click "Resize To (712, 584)" button, then click "Get Size".</li>
+  <li>Click "Resize To (512, 384)" button, then click "Get Size".</li>
+  <li>Click "Resize To (0, 0)" button to narrow window to a line.</li>
+  <li>Click "Resize To (-1440, -900)" button to narrow window to a line.</li>
+</ol>
+<p>
+  <strong>Expected Output:</strong>
+</p>
+<ol>
+  <li>Current window size is got.</li>
+  <li>Window size is enlarged and size is (712, 584).</li>
+  <li>Window size is narrowed and size is (512, 384).</li>
+  <li>Window will becomes to a line.</li>
+  <li>Window will becomes to a line.</li>
+</ol>
+<button onclick="showWindowSize()">Get Size</button>
+<button onclick="resizeBigSize()">Resize To (712, 584)</button>
+<button onclick="resizeSmallSize()">Resize To (512, 384)</button>
+<button onclick="resizeSizeZero()">Resize To (0, 0)</button>
+<button onclick="resizeMinSize()">Resize To (-1440, -900)</button>
+<div>
+Current window size is: (<span id = "width"></span>, <span id = "height"></span>)
+</div>
+<script>
+
+var win = nw.Window.get();
+function showWindowSize() {
+  document.getElementById("width").innerHTML = win.width;
+  document.getElementById("height").innerHTML = win.height;
+}
+function resizeBigSize() {
+  win.resizeTo(712, 584);
+}
+function resizeSmallSize() {
+  win.resizeTo(512, 384);
+}
+function resizeSizeZero() {
+  win.resizeTo(0, 0);
+}
+function resizeMinSize() {
+  win.resizeTo(-1440, -900);
+}
+
+</script>

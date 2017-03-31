@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2017 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<meta charset="utf-8">
+<title>Get And Set Window Position</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="author" title="zhang xiaoyux" href="mailto:xiaoyux.zhang@intel.com">
+<link rel="help" href="http://docs.nwjs.io/en/latest/References/Window/#winx">
+<link rel="help" href="http://docs.nwjs.io/en/latest/References/Window/#winy">
+<link rel="help" href="http://docs.nwjs.io/en/latest/References/Window/#winmovetox-y">
+<p>
+  <strong>Test Steps:</strong>
+</p>
+<ol>
+  <li>Click "Get Position" button to get current window position.</li>
+  <li>Click "Move To (0, 0)" button, then click "Get Position".</li>
+  <li>Click "Move To (200, 200)" button, then click "Get Position".</li>
+  <li>Click "Move To (-512, -384)" button to verify that negative position argument is converted to (0, 0), then click "Get Position" .</li>
+  
+</ol>
+<p>
+  <strong>Expected Output:</strong>
+</p>
+<ol>
+  <li>Current window position is got.</li>
+  <li>Window is moved to left-top and the current position is (0, 0)(or equals screen pixel minus toolbar).</li>
+  <li>Window is moved normally and the current position is (200, 200).</li>
+  <li>Window is moved to left-top and the current position is (0, 0)(or equals screen pixel minus toolbar).</li>
+</ol>
+<button onclick="showWindowPosition()">Get Position</button>
+<button onclick="moveToLeftTop()">Move To (0, 0)</button>
+<button onclick="movePositiveValue()">Move To (200, 200)</button>
+<button onclick="moveNegativeValue()">Move To (-512, -384)</button>
+
+<div>
+Current window position is : (<span id = "left"></span>, <span id = "top"></span>)
+</div>
+<script>
+
+var win = nw.Window.get();
+function showWindowPosition() {
+  document.getElementById("left").innerHTML = win.x;
+  document.getElementById("top").innerHTML = win.y;
+}
+function moveToLeftTop() {
+  win.moveTo(0, 0);
+}
+function movePositiveValue() {
+  win.moveTo(200, 200);
+}
+function moveNegativeValue() {
+  win.moveTo(-512, -384);
+}
+
+
+</script>

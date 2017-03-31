@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2017 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<meta charset="utf-8">
+<title>Window Print</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="author" title="zhang xiaoyux" href="mailto:xiaoyux.zhang@intel.com">
+<link rel="help" href="http://docs.nwjs.io/en/latest/References/Window/#winprintoptions">
+<style>
+.demo {
+  background-color:#d0e4fe;
+  color:orange;
+  text-align:center;
+  font-family:"Times New Roman";
+  font-size:20px;
+}
+</style>
+<p class="demo">
+  <strong>Test Steps:</strong>
+</p>
+<ol>
+  <li>Click "Default Path Print" button.</li>
+  <li>Click "Special Path Print" button.</li>
+  <li>Click "Auto Print" button.</li>
+  <li>Click "Interactive Print" button.</li>
+  <li>Click "No Header Footer Print" button.</li>
+  <li>Click "Media Size Print" button.</li>
+  <li>Click "Css Background Print" button.</li>
+  <li>Click "Margins Type Print" button.</li>  
+</ol>
+<p class="demo">
+  <strong>Expected Output:</strong>
+</p>
+<ol>
+  <li>PDF file is printed under the download path.</li>
+  <li>PDF file is printed under the current path.</li>
+  <li>PDF file is printed automatically.</li>
+  <li>PDF file is printed interactively.</li>
+  <li>PDF file is printed without header and footer.</li>
+  <li>PDF file is printed with paper size spec.</li>
+  <li>PDF file is printed with CSS Backgrounds.</li>
+  <li>PDF file is printed with the custom margin setting.</li>
+</ol>
+<button onclick="defaultPathPrint()">Default Path Print</button>
+<button onclick="specialPathPrint()">Special Path Print</button>
+<button onclick="autoPrint()">Auto Print</button>
+<button onclick="interactivePrint()">Interactive Print</button>
+<button onclick="noHeaderFooterPrint()">No Header Footer Print</button>
+<button onclick="mediaSizePrint()">Media Size Print</button>
+<button onclick="cssBackgroundPrint()">Css Background Print</button>
+<button onclick="marginsTypePrint()">Margins Type Print</button>
+<p class="demo">Hello World!</p>
+<script>
+
+var win = nw.Window.get();
+function autoPrint() {
+  win.print({autoprint: true, pdf_path: 'output.pdf'});
+}
+function interactivePrint() {
+  win.print({autoprint: false, pdf_path: 'output.pdf'});
+}
+function defaultPathPrint() {
+  win.print({autoprint: true});
+}
+function specialPathPrint() {
+  win.print({autoprint: false, pdf_path: 'output.pdf'});
+}
+function noHeaderFooterPrint() {
+  win.print({autoprint: true, pdf_path: 'output.pdf', headerFooterEnabled: false});
+}
+function mediaSizePrint() {
+  win.print({autoprint: true, pdf_path: 'output.pdf', headerFooterEnabled:true, landscape: true, 'mediaSize':{'name': 'CUSTOM', 'width_microns': 279400, 'height_microns': 215900, 'custom_display_name':'Letter', 'is_default': true}});
+}
+function cssBackgroundPrint() {
+ win.print({autoprint: true, pdf_path: 'output.pdf', headerFooterEnabled:true, landscape: true, 'mediaSize':{'name': 'CUSTOM', 'width_microns': 279400, 'height_microns': 215900, 'custom_display_name':'Letter', 'is_default': true}, shouldPrintBackgrounds: true});
+}
+function marginsTypePrint() {
+  win.print({autoprint: true, pdf_path: 'output.pdf',headerFooterEnabled:true,landscape: true,'mediaSize':{'name': 'CUSTOM', 'width_microns': 279400, 'height_microns': 215900, 'custom_display_name':'Letter', 'is_default': true},shouldPrintBackgrounds:true,marginsType:3,"marginsCustom":{"marginBottom":54,"marginLeft":70,"marginRight":28,"marginTop":32}, copies: 1, footerString:'nwtestfooter'});
+}
+
+</script>

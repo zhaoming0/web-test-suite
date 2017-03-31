@@ -1,0 +1,8 @@
+{
+  "name": "window transparent",
+  "main": "index.html",
+  "window": {
+  "frame": true,
+  "transparent": false 
+  }
+}

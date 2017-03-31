@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2017 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<meta charset="utf-8">
+<title>Window ResizeBy</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="author" title="zhang xiaoyux" href="mailto:xiaoyux.zhang@intel.com">
+<link rel="help" href="http://docs.nwjs.io/en/latest/References/Window/#winresizebywidth-height">
+<p>
+  <strong>Test Steps:</strong>
+</p>
+<ol>
+  <li>Click "Get Default Size" button.</li>
+  <li>Click "Resize By (0, 0)" button, then click "Get Current Size".</li>
+  <li>Click "Resize By (-200, 200)" button, then click "Get Current Size".</li>
+  <li>Click "Resize By (200, 200)" button, then click "Get Current Size".</li>
+  <li>Click "Resize By (-10000, -10000)" button to narrow window to minimize.</li>
+</ol>
+<p>
+  <strong>Expected Output:</strong>
+</p>
+<ol>
+  <li>Default window size is got and note it as (width, height)</li>
+  <li>Window size maintains unchanged and the current window size is euqal to default window size</li>
+  <li>Window size is narrowed and the current window size is (width-200, height-200)</li>
+  <li>Window size is enlarged and the current window size is euqal to default window size</li>
+  <li>Window becomes to a line.</li>
+</ol>
+<button onclick="showDefaultSize()">Get Default Size</button>
+<button onclick="resizeByZero()">Resize By (0, 0)</button>
+<button onclick="resizeNarrowSize()">Resize By (-200, -200)</button>
+<button onclick="resizeEnlargeSize()">Resize By (200, 200)</button>
+<button onclick="resizeMinSize()">Resize By (-10000, -10000)</button>
+<button onclick="showCurrentSize()">Get Current Size</button>
+<div>
+Default window size is: (<span id = "default_width"></span>, <span id = "default_height"></span>)</br>
+Current window size is: (<span id = "current_width"></span>, <span id = "current_height"></span>)
+</div>
+<script>
+
+var win = nw.Window.get();
+function showDefaultSize() {
+  var win=nw.Window.get();
+  document.getElementById("default_width").innerHTML = win.width;
+  document.getElementById("default_height").innerHTML = win.height;
+}
+function showCurrentSize() {
+  document.getElementById("current_width").innerHTML = win.width;
+  document.getElementById("current_height").innerHTML = win.height;
+}
+function resizeEnlargeSize() {
+  win.resizeBy(200, 200);
+}
+function resizeNarrowSize() {
+  win.resizeBy(-200, -200);
+}
+function resizeByZero() {
+  win.resizeBy(0, 0);
+}
+function resizeMinSize() {
+  win.resizeBy(-10000, -10000);
+}
+
+</script>

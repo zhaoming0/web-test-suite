@@ -1,0 +1,5 @@
+{
+  "name":"get and set window position",
+  "main":"index.html",
+  "window":{"position":"center"}
+}
