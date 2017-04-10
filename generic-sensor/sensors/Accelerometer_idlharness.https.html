@@ -100,11 +100,6 @@ interface Accelerometer : Sensor {
   readonly attribute unrestricted double? x;
   readonly attribute unrestricted double? y;
   readonly attribute unrestricted double? z;
-  readonly attribute boolean includesGravity;
-};
-
-dictionary AccelerometerOptions :  SensorOptions  {
-  boolean includeGravity = true;
 };
 </pre>
 
@@ -118,7 +113,7 @@ dictionary AccelerometerOptions :  SensorOptions  {
   idl_array.add_idls(document.getElementById('accelerometer-idl').textContent);
 
   idl_array.add_objects({
-    Accelerometer: ['new Accelerometer({x: 0.5, y: 0.5, z: 0.5});']
+    Accelerometer: ['new Accelerometer();']
   });
 
   idl_array.test();
