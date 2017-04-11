@@ -1,0 +1,5 @@
+{
+  "name":"window event move",
+  "main":"index.html",
+  "window":{"position":"center"}
+}
