@@ -27,41 +27,18 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
-<title>Document Start And End</title>
+<title>Iframe</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="zhang xiaoyux" href="mailto:xiaoyux.zhang@intel.com">
 <link rel="help" href="http://docs.nwjs.io/en/latest/References/Window/#event-document-startframe">
 <link rel="help" href="http://docs.nwjs.io/en/latest/References/Window/#event-document-endframe">
-<p>
-  <strong>Test Steps:</strong>
-</p>
-<ol>
-  <li>Click "Load Iframe" to start and end document event.</li>
-</ol>
-<p>
-  <strong>Expected Output:</strong>
-</p>
-<ol>
-  <li>Iframe is loaded and "start-iframe-end" text is displayed.</li>
-</ol>
-<button onclick="loadIframe()">Load Iframe</button>
-<p id="demo"></p>
+<body onload="loadIframe_2()">
+<p id="iframe_id">iframe</p>
 <script>
 
-var win = nw.Window.get();
-function loadIframe() {
-  var iframe = document.createElement("iframe");
-  iframe.src = "iframe.html";
-  iframe.name = "iframe";
-  iframe.width = "100%";
-  iframe.height = "25%";
-  document.body.appendChild(iframe);
+function loadIframe_2() {
+  document.getElementById("iframe_id").innerHTML += "-load";
 }
-win.on("document-start", function(frame) {
-  document.getElementById("demo").innerHTML = "start";
-});
-win.on("document-end", function(frame) {
-  document.getElementById("demo").innerHTML += "-" + frame.document.getElementById("iframe_id").innerHTML + "-end";
-});
 
 </script>
+</body>
