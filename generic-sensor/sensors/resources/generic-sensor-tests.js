@@ -12,7 +12,7 @@ function runGenericSensorTests(sensorType, verifyReading, readingToArray) {
     });
     sensor.onerror = t.step_func_done(unreached);
     sensor.start();
-  }, "Test that onChange is called and sensor reading is valid");
+  }, "Test that 'onchange' is called and sensor reading is valid");
 
   async_test(t => {
     let sensor1 = new sensorType();

@@ -72,13 +72,10 @@ async_test(t => {
 
 async_test(t => {
   let sensor = new AbsoluteOrientationSensor();
-  sensor.onchange = t.step_func_done(() => {
-    assert_throws({ name: 'SyntaxError' }, () => sensor.populateMatrix("not RotationMatrixType parameter"), "not RotationMatrixType parameter");
-    assert_throws({ name: 'TypeError' }, () => sensor.populateMatrix(new Float32Array(15)), "a size less than sixteen Float32Array type parameter");
-    sensor.stop();
-  });
   sensor.onerror = t.step_func_done(unreached);
-  sensor.start();
+  assert_throws({ name: 'NotReadableError' }, () => sensor.populateMatrix(new Float32Array(16)));
+  assert_throws({ name: 'TypeError' }, () => sensor.populateMatrix(new Float32Array(15)), "a size less than sixteen Float32Array type parameter");
+  assert_throws({ name: 'SyntaxError' }, () => sensor.populateMatrix("not RotationMatrixType parameter"), "not RotationMatrixType parameter");
 }, "exception is thrown when 'populateMatrix' event has a wrong paramter");
 
 async_test(t => {
