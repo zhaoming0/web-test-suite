@@ -75,7 +75,8 @@ async_test(t => {
   sensor.onerror = t.step_func_done(unreached);
   assert_throws({ name: 'NotReadableError' }, () => sensor.populateMatrix(new Float32Array(16)));
   assert_throws({ name: 'TypeError' }, () => sensor.populateMatrix(new Float32Array(15)), "a size less than sixteen Float32Array type parameter");
-  assert_throws({ name: 'SyntaxError' }, () => sensor.populateMatrix("not RotationMatrixType parameter"), "not RotationMatrixType parameter");
+  assert_throws({ name: 'TypeError' }, () => sensor.populateMatrix("not RotationMatrixType parameter"), "not RotationMatrixType parameter");
+  t.done();
 }, "exception is thrown when 'populateMatrix' event has a wrong paramter");
 
 async_test(t => {
