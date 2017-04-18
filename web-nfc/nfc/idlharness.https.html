@@ -38,14 +38,14 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <h1 class="instructions">Description</h1>
 <p class="instructions">This test verifies the availability of the Web-NFC interface.</p>
 <div id='log'></div>
-<script src=./resources/testharness.js></script>
-<script src=./resources/testharnessreport.js></script>
-<script src=./resources/WebIDLParser.js></script>
-<script src=./resources/idlharness.js></script>
+<script src=../resources/testharness.js></script>
+<script src=../resources/testharnessreport.js></script>
+<script src=../resources/WebIDLParser.js></script>
+<script src=../resources/idlharness.js></script>
 
 <style>
   pre {
-      display: none;
+    display: none;
   }
 </style>
 <pre id="idl">
@@ -118,14 +118,14 @@ dictionary NFCWatchOptions {
 
 <script>
 setup(() => {
-   "use strict";
-    var idl_array = new IdlArray();
-    idl_array.add_untested_idls(document.getElementById('idl').textContent);
-    idl_array.add_idls(document.getElementById('web-nfc').textContent);
-    idl_array.add_objects({NFC: ["navigator.nfc"]});
-    idl_array.test();
-    done();
-}, {explicit_done: true});
+  "use strict";
+  const idl_array = new IdlArray();
+  idl_array.add_untested_idls(document.getElementById('idl').textContent);
+  idl_array.add_idls(document.getElementById('web-nfc').textContent);
+  idl_array.add_objects({ NFC: ["navigator.nfc"] });
+  idl_array.test();
+  done();
+}, { explicit_done: true });
 </script>
 </body>
 </html>
