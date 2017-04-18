@@ -1,0 +1,7 @@
+{
+  "name": "manifest window position mouse",
+  "main": "index.html",
+  "window": {
+    "position": "mouse" 
+  }
+}

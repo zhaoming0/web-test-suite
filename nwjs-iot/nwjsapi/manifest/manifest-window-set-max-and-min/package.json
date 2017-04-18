@@ -1,0 +1,10 @@
+{
+  "name": "manifest window set max and min",
+  "main": "index.html",
+  "window": {
+    "min_width": 100,
+    "min_height": 80,
+    "max_width": 1000,
+    "max_height": 800
+  }
+}

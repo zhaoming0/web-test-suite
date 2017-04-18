@@ -1,0 +1,9 @@
+{
+  "name": "manifest window size",
+  "main": "index.html",
+  "window": {
+    "title": "Initial Window",
+    "width": 300,
+    "height": 400
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "manifest window show true",
+  "main": "index.html",
+  "window": {
+    "show": true 
+  }
+}

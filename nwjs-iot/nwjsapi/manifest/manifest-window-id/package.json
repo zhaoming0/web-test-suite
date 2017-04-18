@@ -1,0 +1,7 @@
+{
+  "name": "manifest window id", 
+  "main": "index.html",
+  "window": {
+  "id": "window_id"
+  }
+} 

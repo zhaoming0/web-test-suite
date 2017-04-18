@@ -1,0 +1,7 @@
+{
+  "name": "manifest window title",
+  "main": "index.html",
+  "window": {
+    "title": "Initial Window"
+  }
+}

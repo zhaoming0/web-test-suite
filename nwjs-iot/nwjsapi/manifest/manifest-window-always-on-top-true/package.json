@@ -1,0 +1,7 @@
+{
+  "name": "manifest window always on top true",
+  "main": "index.html",
+  "window": {
+    "always_on_top": true
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "manifest window kiosk true",
+  "main": "index.html",
+  "window": {
+    "kiosk": true
+  }
+}

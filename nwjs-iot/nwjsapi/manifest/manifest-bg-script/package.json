@@ -1,0 +1,5 @@
+{
+  "name": "manifest bg script", 
+  "main": "index.html",
+  "bg-script": "background.js"
+} 

@@ -1,0 +1,7 @@
+{
+  "name": "manifest window visible on all workspaces true",
+  "main": "index.html",
+  "window": {
+    "visible_on_all_workspaces": true
+  }
+}

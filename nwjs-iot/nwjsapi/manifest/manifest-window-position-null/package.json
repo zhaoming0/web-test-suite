@@ -1,0 +1,7 @@
+{
+  "name": "manifest window position null",
+  "main": "index.html",
+  "window": {
+    "position": null
+  }
+}

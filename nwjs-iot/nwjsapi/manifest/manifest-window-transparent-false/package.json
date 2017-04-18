@@ -1,0 +1,8 @@
+{
+  "name": "manifest window transparent false",
+  "main": "index.html",
+  "window": {
+  "frame": true,
+  "transparent": false 
+  }
+}

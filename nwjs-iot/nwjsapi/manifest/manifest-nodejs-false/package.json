@@ -1,0 +1,5 @@
+{
+  "name": "manifest nodejs false", 
+  "main": "index.html",
+  "nodejs": false
+} 

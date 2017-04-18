@@ -1,0 +1,7 @@
+{
+  "name": "manifest window fullscreen true",
+  "main": "index.html",
+  "window": {
+    "fullscreen": true
+  } 
+}

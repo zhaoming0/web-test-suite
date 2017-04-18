@@ -1,0 +1,8 @@
+{
+  "name": "manifest window show in taskbar true", 
+  "main": "index.html",
+  "window": {
+    "show_in_taskbar": true,
+    "icon": "logo.png"
+  }
+} 

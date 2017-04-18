@@ -1,0 +1,7 @@
+{
+  "name": "manifest window frame true",
+  "main": "index.html",
+  "window": {
+    "frame": true 
+  }
+}

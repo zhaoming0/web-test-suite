@@ -1,0 +1,7 @@
+{
+  "name": "manifest window resizable false",
+  "main": "index.html",
+  "window": {
+    "resizable": false
+  }
+}

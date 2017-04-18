@@ -1,0 +1,7 @@
+{
+  "name": "manifest window frame false",
+  "main": "index.html",
+  "window": {
+    "frame": false
+  }
+}
