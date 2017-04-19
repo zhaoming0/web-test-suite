@@ -138,3 +138,45 @@ function createOpaqueRecord(buffer) {
 function createUrlRecord(url) {
   return createRecord("url", "text/plain", url);
 }
+
+function testNFCMessage(datas, desc) {
+  promise_test(t => {
+    return navigator.nfc.push({data: [{data: datas.data, recordType: datas.recordType, mediaType: datas.mediaType}]})
+      .then(() => {
+        return new Promise(resolve => {
+          navigator.nfc.watch((message) => resolve(message), {recordType: datas.recordTypes, mediaType: datas.mediaType});
+        }).then((message) => {
+          for (let record of message.data) {
+            assert_equals(record.recordType, datas.recordType);
+            assert_equals(record.mediaType, datas.mediaType);
+            switch (record.recordType) {
+              case "text":
+              case "url":
+                assert_equals(record.data, datas.data);
+                break;
+              case "json":
+                for (let prop in record.data) {
+                  if (record.data[prop] instanceof Array) {
+                    assert_array_equals(record.data[prop], datas.data[prop]);
+                  }else{
+                    assert_equals(record.data[prop], datas.data[prop]);
+                  }
+                }
+                break;
+              case "opaque":
+                for (let i= 0; i<= record.data.byteLength; i++) {
+                  assert_equals(record.data[i], datas.data[i]);
+                }
+                break;
+              case "empty":
+                assert_unreached();
+                break;
+              default:
+                assert_unreached("Invalid RecordType");
+                break;
+            }
+          }
+        });
+      });
+  }, desc);
+}

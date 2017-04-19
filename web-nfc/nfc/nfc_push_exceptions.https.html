@@ -116,4 +116,9 @@ promise_test(t => {
   return promise_rejects(t, "TimeoutError", navigator.nfc.push(test_text_data, { timeout: 1 }));
 }, "nfc.push should fail with TimeoutError when timer expires.");
 
+promise_test(t => {
+  return promise_rejects(t, "SyntaxError", navigator.nfc.push({data: [{data: null, mediaType: "", recordType: "empty"}]}))
+}, "Test that nfc.push fails with 'SyntaxError' when message is NFCMessage and recordType is 'empty'.");
+
+
 </script>
