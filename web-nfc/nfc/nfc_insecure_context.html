@@ -33,8 +33,6 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
 <script src="nfc_help.js"></script>
-<meta name="flags" content="interact">
-<div id="log"></div>
 
 <h2>Precondition</h2>
 <ol>
@@ -43,23 +41,25 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   </li>
 </ol>
 
+<div id="log"></div>
+
 <script>
 
 "use strict";
-test(() => {
-  assert_throws('SecurityError', () => { navigator.nfc.push(test_text_data); });
+promise_test(t => {
+  return promise_rejects(t, 'SecurityError', navigator.nfc.push(test_text_data));
 }, "nfc.push should fail with SecurityError in a secure context.");
 
-test(() => {
-  assert_throws('SecurityError', () => { navigator.nfc.cancelPush(); });
+promise_test(t => {
+  return promise_rejects(t, 'SecurityError', navigator.nfc.cancelPush());
 }, "nfc.cancelPush should fail with SecurityError in a secure context.");
 
-test(() => {
-  assert_throws('SecurityError', () => { navigator.nfc.Watch(noop); });
+promise_test(t => {
+  return promise_rejects(t, 'SecurityError', navigator.nfc.watch(noop));
 }, "nfc.watch should fail with SecurityError in a secure context.");
 
-test(() => {
-  assert_throws('SecurityError', () => { navigator.nfc.cancelWatch(); });
+promise_test(t => {
+  return promise_rejects(t, 'SecurityError', navigator.nfc.cancelWatch());
 }, "nfc.cancelWatch should fail with SecurityError in a secure context.");
 
 </script>
