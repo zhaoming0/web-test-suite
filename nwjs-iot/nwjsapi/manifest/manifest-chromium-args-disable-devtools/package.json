@@ -1,0 +1,5 @@
+{
+  "name": "manifest chromium args disable devtools",
+  "main": "index.html",
+  "chromium-args": "--disable-devtools"
+}

@@ -1,0 +1,6 @@
+{
+  "name": "window domain",
+  "main": "index.html",
+  "permissions": ["chrome-extension://*"],
+  "domain": "SomeDomain"
+}
