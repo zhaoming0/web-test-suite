@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2017 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<meta charset="utf-8">
+<title>Window CapturePage Png Buffer</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="author" title="zhang xiaoyux" href="mailto:xiaoyux.zhang@intel.com">
+<link rel="help" href="http://docs.nwjs.io/en/latest/References/Window/#wincapturepagecallback-config">
+<body style="background:#FFCCCC">
+<p>
+  <strong>Test Steps:</strong>
+</p>
+<ol>
+  <li>Click "Capture Page" to capture first window image.</li>
+</ol>
+<p>
+  <strong>Expected Output:</strong>
+</p>
+<ol>
+  <li>First window image is showed on second window and "success" is showed on first window.</li>
+</ol>
+<button onclick="capturePage()">Capture Page</button>
+<script>
+
+var win_1 = nw.Window.get();
+var win_2 = null;
+function out(id, msg) {
+  var h1 = document.createElement("h1");
+  h1.setAttribute('id', id);
+  h1.innerHTML = msg;
+  document.body.appendChild(h1);
+}
+win_1.on("loaded", function() {
+  nw.Window.open("secondwindow.html", {"position": "mouse"}, function(w) {
+    win_2 = w;
+    win_1.focus();
+  })
+})
+function capturePage() {
+  var data_png = null;
+  win_1.capturePage(function(buffer) {
+    data_png = "data:image/png;base64," + buffer.toString("base64");
+  }, {format: "png", datatype: "buffer"});
+  setTimeout(function() {
+    win_2.window.document.getElementById("demo").src = data_png;
+    out("result", "success");
+  }, 1000); 
+}
+
+</script>
+</body>

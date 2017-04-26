@@ -27,8 +27,50 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
-<title>Second Window</title>
+<title>Window CapturePage Jpeg</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="zhang xiaoyux" href="mailto:xiaoyux.zhang@intel.com">
-<p>This is second window.</p>
-<button onclick="nw.Window.get().close()">Close Window</button>
+<link rel="help" href="http://docs.nwjs.io/en/latest/References/Window/#wincapturepagecallback-config">
+<body style="background:#CCFF99">
+<p>
+  <strong>Test Steps:</strong>
+</p>
+<ol>
+  <li>Click "Capture Page" to capture first window image.</li>
+</ol>
+<p>
+  <strong>Expected Output:</strong>
+</p>
+<ol>
+  <li>First window image is showed on second window and "success" is showed on first window.</li>
+</ol>
+<button onclick="capturePage()">Capture Page</button>
+<script>
+
+var win_1 = nw.Window.get();
+var win_2 = null;
+function out(id, msg) {
+  var h1 = document.createElement("h1");
+  h1.setAttribute('id', id);
+  h1.innerHTML = msg;
+  document.body.appendChild(h1);
+}
+win_1.on("loaded", function() {
+  nw.Window.open("secondwindow.html", {"position": "mouse"}, function(w) {
+    win_2 = w;
+    win_1.focus();
+  })
+})
+function capturePage() {
+  var data_jpeg = null;
+  win_1.capturePage(function(img) {
+    data_jpeg = img;
+  }, "jpeg");
+  setTimeout(function() {
+    win_2.window.document.getElementById("demo").src = data_jpeg;
+    out("result", "success");
+  }, 1000); 
+}
+
+</script>
+</body>
