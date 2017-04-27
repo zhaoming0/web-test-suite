@@ -41,7 +41,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <strong>Expected Output:</strong>
 </p>
 <ol>
-  <li>Window focus is moved to second app.</li>
+  <li>Window focus is moved to second app and "success" is showed.</li>
 </ol>
 <button onclick="moveFocus()">Move Focus</button>
 <p id="result"></p>
@@ -49,25 +49,24 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 var win_1 = nw.Window.get();
 var win_2 = null;
+function out(id, msg) {
+  var h1 = document.createElement("h1");
+  h1.setAttribute("id", id);
+  h1.innerHTML = msg;
+  document.body.appendChild(h1);
+}
 nw.Window.open('secondapp.html', {
   "title": "Second App",
   "position": "mouse",
   "focus": true
   }, function(w) {
     win_2 = w;
-    try {
-      win_1.focus();
-      win_1.window.document.getElementById('result').innerHTML = "This app has focus";
-    } 
-    catch(e) {
-      win_2.blur();
-      win_1.window.document.getElementById('result').innerHTML = "This app has focus";
-    }
-  });
+    win_1.focus();
+  }
+)
 function moveFocus() {
   win_2.focus();
-  win_2.window.document.getElementById('popup').innerHTML = "This app has focus";
-  win_1.window.document.getElementById('result').innerHTML = "This app hasn't focus";
+  out("result", "success");
 }
 
 </script>

@@ -27,7 +27,45 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
+<title>Window Blur</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="zhang xiaoyux" href="mailto:xiaoyux.zhang@intel.com">
-<p id="popup">This app doesn't have focus</p>
+<link rel="help" href="http://docs.nwjs.io/en/latest/References/Window/#winblur">
+<p>
+  <strong>Test Steps:</strong>
+</p>
+<ol>
+  <li>Click "Move Focus Away" button to move window focus.</li>
+</ol>
+<p>
+  <strong>Expected Output:</strong>
+</p>
+<ol>
+  <li>Window focus is moved to second app and "success" is showed.</li>
+</ol>
+<button onclick="moveFocusAway()">Move Focus Away</button>
+<p id="result"></p>
+<script>
 
+var win_1 = nw.Window.get();
+var win_2 = null;
+function out(id, msg) {
+  var h1 = document.createElement("h1");
+  h1.setAttribute("id", id);
+  h1.innerHTML = msg;
+  document.body.appendChild(h1);
+}
+nw.Window.open('secondapp.html', {
+  "title": "Second App",
+  "position": "mouse"
+  }, function(w) {
+    win_2 = w;
+    win_1.focus();
+  } 
+)
+function moveFocusAway() {
+  win_1.blur();
+  out("result", "success");
+}
+
+</script>
