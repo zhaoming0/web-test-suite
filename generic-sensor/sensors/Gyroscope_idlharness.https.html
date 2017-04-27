@@ -104,7 +104,7 @@ interface Gyroscope : Sensor {
   idl_array.add_idls(document.getElementById('gyroscope-idl').textContent);
 
   idl_array.add_objects({
-    Gyroscope: ['new Gyroscope({x: 0.5, y: 0.5, z: 0.5});']
+    Gyroscope: ['new Gyroscope();']
   });
 
   idl_array.test();
