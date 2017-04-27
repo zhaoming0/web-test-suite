@@ -1,0 +1,9 @@
+{
+  "name": "window getAll cookies",
+  "main": "index.html",
+  "permission": [
+    "cookies",
+    "*://*.google.com",
+    "*://*.baidu.com"
+  ]
+}

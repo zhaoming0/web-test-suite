@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<!--
+/**
 Copyright (c) 2017 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -24,40 +23,7 @@ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
 OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
--->
+**/
 
-<meta charset="utf-8">
-<title>Window Event Navigation</title>
-<link rel="author" title="Intel" href="http://www.intel.com">
-<link rel="author" title="zhang xiaoyux" href="mailto:xiaoyux.zhang@intel.com">
-<link rel="help" href="http://docs.nwjs.io/en/latest/References/Window/#event-navigation-frame-url-policy">
-<p>
-  <strong>Test Steps:</strong>
-</p>
-<ol>
-  <li>Click "Ignore Second Window" button, then click "Second Window" link.</li>
-</ol>
-<p>
-  <strong>Expected Output:</strong>
-</p>
-<ol>
-  <li>Second window can't popup and "Ignore the request, navigation won't happen." text is displayed.</li>
-</ol>
-<button onclick="ignoreSecondWindow()">Ignore Second Window</button>
-<a href="secondwindow.html" target="_blank">Second Window</iframe>
-<script>
-
-var win = nw.Window.get();
-function out(id, msg) {
-  var p = document.createElement("p");
-  p.setAttribute('id', id);
-  p.innerHTML = msg;
-  document.body.appendChild(p);
-}
-function ignoreSecondWindow(){
-  win.on("navigation", function(frame, url, policy, context) {
-    policy.ignore();
-  })
-  out("result", "Ignore the request, navigation won't happen.");
-}
-</script>
+var result = result || [];
+result.push("start");

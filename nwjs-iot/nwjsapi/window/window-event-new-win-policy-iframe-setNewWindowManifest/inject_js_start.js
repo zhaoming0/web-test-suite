@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<!--
+/**
 Copyright (c) 2017 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -24,12 +23,7 @@ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
 OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
--->
+**/
 
-<meta charset="utf-8">
-<title>Second Window</title>
-<link rel="author" title="Intel" href="http://www.intel.com">
-<link rel="author" title="zhang xiaoyux" href="mailto:xiaoyux.zhang@intel.com">
-<p>This is second window.</p>
-<iframe src="">Second Window</iframe>
-<button onclick="nw.Window.get().close()">Close Window</button>
+var result = result || [];
+result.push("start");
