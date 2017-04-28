@@ -78,8 +78,8 @@ const invalid_messages =
   ];
 
 promise_test(t => {
-  return promise_rejects(t, "SyntaxError", navigator.nfc.push(undefined));
-}, "Test that passing undefined to nfc.push would raise SyntaxError.");
+  return promise_rejects(t, new TypeError(), navigator.nfc.push(undefined));
+}, "Test that passing undefined to nfc.push would raise TypeError.");
 
 promise_test(t => {
   let promises = [];
@@ -113,11 +113,15 @@ promise_test(t => {
 }, "Reject promise with NotSupportedError if NFC message size exceeds 32KB.");
 
 promise_test(t => {
-  return promise_rejects(t, "SyntaxError", navigator.nfc.push(test_text_data, { timeout: "invalid"}));
-}, "nfc.push should fail with SyntaxError when timeout value is invalid.");
+  return promise_rejects(t, new TypeError(), navigator.nfc.push(test_text_data, { timeout: "invalid"}));
+}, "nfc.push should fail with TypeError when timeout value is invalid.");
 
 promise_test(t => {
   return promise_rejects(t, "TimeoutError", navigator.nfc.push(test_text_data, { timeout: 1 }));
 }, "nfc.push should fail with TimeoutError when timer expires.");
+
+promise_test(t => {
+  return promise_rejects(t, new TypeError(), navigator.nfc.push(test_number_data);
+}, "nfc.push should fail with TypeError when parameter is 'number'.");
 
 </script>
