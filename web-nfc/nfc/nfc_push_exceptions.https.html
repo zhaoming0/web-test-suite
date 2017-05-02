@@ -40,6 +40,8 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 "use strict";
 const invalid_messages =
   [
+    //Invalid NFCPushMessage type
+    undefined,
     // NFCMessage.data: should have at least 1 valid record.
     // https://w3c.github.io/web-nfc/#the-push-method - Step 8.
     createMessage([{}]),
@@ -85,14 +87,14 @@ promise_test(t => {
   let promises = [];
   invalid_messages.forEach(message => {
     promises.push(
-      promise_rejects(t, "SyntaxError", navigator.nfc.push(message)));
+      promise_rejects(t, new TypeError(), navigator.nfc.push(message)));
   });
   return Promise.all(promises);
-}, "Test that promise is rejected with SyntaxError if NFCMessage is invalid.");
+}, "Test that promise is rejected with TypeError if NFCMessage is invalid.");
 
 promise_test(t => {
-  return promise_rejects(t, "SyntaxError", navigator.nfc.push({data: [{data: null, mediaType: "", recordType: "empty"}]}))
-}, "Test that nfc.push fails with 'SyntaxError' when message is NFCMessage and recordType is 'empty'.");
+  return promise_rejects(t, new TypeError(), navigator.nfc.push({data: [{data: null, mediaType: "", recordType: "empty"}]}))
+}, "Test that nfc.push fails with 'TypeError' when message is NFCMessage and recordType is 'empty'.");
 
 promise_test(t => {
   return promise_rejects(t, new TypeError(), navigator.nfc.push(test_text_data, {target: "invalid"}));
@@ -121,7 +123,11 @@ promise_test(t => {
 }, "nfc.push should fail with TimeoutError when timer expires.");
 
 promise_test(t => {
-  return promise_rejects(t, new TypeError(), navigator.nfc.push(test_number_data);
+  return promise_rejects(t, new TypeError(), navigator.nfc.push(test_text_data, { timeout: -1 }));
+}, "nfc.push should fail with TypeError when timeout value is negative.");
+
+promise_test(t => {
+  return promise_rejects(t, new TypeError(), navigator.nfc.push(test_number_data));
 }, "nfc.push should fail with TypeError when parameter is 'number'.");
 
 </script>
