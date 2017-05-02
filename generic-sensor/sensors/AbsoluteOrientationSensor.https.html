@@ -39,7 +39,6 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 </iframe>
 <script>
 
-const quat_init = [1, 0, 0, 0];
 const mat_init = [1,  0,  0,  0,
                   0, -1,  0,  0,
                   0,  0, -1,  0,
@@ -79,6 +78,14 @@ async_test(t => {
   t.done();
 }, "exception is thrown when 'populateMatrix' event has a wrong paramter");
 
+function get_precision_senven(arr) {
+  let pre_arr = new Array();
+  for (let i = 0; i < arr.length; i++) {
+    pre_arr[i] = parseInt(arr[i] * 1000000);
+  }
+  return pre_arr;
+}
+
 async_test(t => {
   let sensor = new AbsoluteOrientationSensor();
   let mat_32 = new Float32Array(16);
@@ -86,7 +93,7 @@ async_test(t => {
     let quat = sensor.quaternion;
     sensor.populateMatrix(mat_32);
     let mat_com = create_matrix(quat);
-    assert_array_equals(mat_32, mat_com);
+    assert_array_equals(get_precision_senven(mat_32), get_precision_senven(mat_com));
     sensor.stop();
   });
   sensor.onerror = t.step_func_done(unreached);
@@ -138,7 +145,7 @@ async_test(t => {
 
 function verify_sensor_reading(sensor, reading_exist = true) {
   if (reading_exist) {
-    if (sensor.timestamp == null || sensor.quaternion.toString() == quat_init.toString()) {
+    if (sensor.timestamp == null || sensor.quaternion == null) {
       return false;
     }
     return true;
