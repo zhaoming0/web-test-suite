@@ -27,44 +27,47 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
-<title>Window Kiosk Mode</title>
+<title>Window Show True</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="zhang xiaoyux" href="mailto:xiaoyux.zhang@intel.com">
-<link rel="help" href="http://docs.nwjs.io/en/latest/References/Window/#winiskioskmode">
-<link rel="help" href="http://docs.nwjs.io/en/latest/References/Window/#winenterkioskmode">
-<link rel="help" href="http://docs.nwjs.io/en/latest/References/Window/#wintogglekioskmode">
+<link rel="help" href="http://docs.nwjs.io/en/latest/References/Window/#winshowis_show">
 <p>
   <strong>Test Steps:</strong>
 </p>
 <ol>
-  <li>Click 'Enter Kiosk' button to enter kiosk mode.</li>
-  <li>Click 'Toggle Kiosk' button to leave kiosk mode.</li>
+  <li>Click 'Hide Second Window' button to open and hide second window.</li>
+  <li>Click 'Show Second Window' button to show second window.</li>
 </ol>
 <p>
   <strong>Expected Output:</strong>
 </p>
 <ol>
-  <li>Window enters full screen mode.</li>
-  <li>Window toggles full screen mode and "success" is showed.</li>
+  <li>Second window is hided.</li>
+  <li>Second window is showed and "success" is displayed on first second.</li>
 </ol>
-<button onclick="enterKioskMode()">Enter Kiosk</button>
-<button onclick="toggleKioskMode()">Toggle Kiosk</button>
+<button onclick="hideSecondWindow()">Hide Second Window</button>
+<button onclick="showSecondWindow()">Show Second Window</button>
 <script>
 
-var win = nw.Window.get();
+var win_1 = nw.Window.get();
+var win_2 = null;
 function out(id, msg) {
   var h1 = document.createElement("h1");
   h1.setAttribute("id", id);
   h1.innerHTML = msg;
   document.body.appendChild(h1);
 }
-function enterKioskMode() {
-  if(!win.isKioskMode) {
-    win.enterKioskMode();
-  }
+function hideSecondWindow() {
+  nw.Window.open("secondwindow.html", {
+    "position": "mouse",
+    "title": "Second Window"
+  }, function(w) {
+    win_2 = w;
+    win_2.hide();
+  })
 }
-function toggleKioskMode() {
-  win.toggleKioskMode();
+function showSecondWindow() {
+  win_2.show(true);
   out("result", "success");
 }
 

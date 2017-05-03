@@ -27,39 +27,30 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
-<title>Window Set Always On Top</title>
+<title>Window Hide</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="zhang xiaoyux" href="mailto:xiaoyux.zhang@intel.com">
-<link rel="help" href="http://docs.nwjs.io/en/latest/References/Window/#winsetalwaysontoptop">
+<link rel="help" href="http://docs.nwjs.io/en/latest/References/Window/#winhide">
 <p>
   <strong>Test Steps:</strong>
 </p>
 <ol>
-  <li>Click "Open Second App" button to open second app.</li>
-  <li>Click "Close Second App" button to close second app.</li>
-  <li>Click "Set Always On Top" button, then click "Open Second App".</li>
+  <li>Click 'Hide Window' button to hide window.</li>
 </ol>
 <p>
   <strong>Expected Output:</strong>
 </p>
 <ol>
-  <li>Second app is opened above the first app.</li>
-  <li>Second app is closed.</li>
-  <li>Second app is opened below the first app.</li>
+  <li>Window disappears.</li>
 </ol>
-<button onclick="openSecondApp()">Open Second App</button>
-<button onclick="setAlwaysOnTop(true)">Set Always On Top</button>
+<button onclick="hideWindow()">Hide Window</button>
 <script>
 
 var win = nw.Window.get();
-function setAlwaysOnTop(status) {
-  win.setAlwaysOnTop(status);
-}
-function openSecondApp() {
-  nw.Window.open("secondapp.html", {
-    "title": "Second App",
-    "position": "mouse"
-  });
+function hideWindow() {
+  if(win.show() == undefined) {
+    win.hide();
+  }
 }
 
 </script>

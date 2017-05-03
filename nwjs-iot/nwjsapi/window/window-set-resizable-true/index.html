@@ -27,28 +27,39 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
-<title>Window Kiosk Mode</title>
+<title>Window Set Resizable True</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="zhang xiaoyux" href="mailto:xiaoyux.zhang@intel.com">
-<link rel="help" href="http://docs.nwjs.io/en/latest/References/Window/#winiskioskmode">
-<link rel="help" href="http://docs.nwjs.io/en/latest/References/Window/#winenterkioskmode">
-<link rel="help" href="http://docs.nwjs.io/en/latest/References/Window/#wintogglekioskmode">
+<link rel="help" href="http://docs.nwjs.io/en/latest/References/Window/#winsetresizableresizable">
 <p>
   <strong>Test Steps:</strong>
 </p>
 <ol>
-  <li>Click 'Enter Kiosk' button to enter kiosk mode.</li>
-  <li>Click 'Toggle Kiosk' button to leave kiosk mode.</li>
+  <li>Click "Resize To (712, 584)" button to resize window size to (712,584).</li>
+  <li>Click "Resize To (512, 384)" button to resize window size to (512,384).</li>
+  <li>Click "Set Resizable True" button to enable resize function.</li>
+  <li>Click "Resize To (712, 584)" button, then click "Get Size".</li>
+  <li>Click "Resize To (312, 184)" button, then click "Get Size".</li>
 </ol>
 <p>
   <strong>Expected Output:</strong>
 </p>
 <ol>
-  <li>Window enters full screen mode.</li>
-  <li>Window toggles full screen mode and "success" is showed.</li>
+  <li>Window size is unchanged.</li>
+  <li>Window size is unchanged.</li>
+  <li>"success" text is displayed.</li>
+  <li>Window size is changed and current window size is (712, 584).</li>
+  <li>Window size is changed and current window size is (312, 184).</li>
 </ol>
-<button onclick="enterKioskMode()">Enter Kiosk</button>
-<button onclick="toggleKioskMode()">Toggle Kiosk</button>
+<button onclick="resizeBigSize()">Resize To (712, 584)</button>
+<button onclick="resizeNormalSize()">Resize To (512, 384)</button>
+<button onclick="resizeSmallSize()">Resize To (312, 184)</button>
+<button onclick="setResizableTrue()">Set Resizable True</button>
+<button onclick="showWindowSize()">Get Size</button>
+
+<div>
+Current window size is: (<span id = "width"></span>, <span id = "height"></span>)
+</div>
 <script>
 
 var win = nw.Window.get();
@@ -58,14 +69,25 @@ function out(id, msg) {
   h1.innerHTML = msg;
   document.body.appendChild(h1);
 }
-function enterKioskMode() {
-  if(!win.isKioskMode) {
-    win.enterKioskMode();
-  }
+function showWindowSize() {
+  document.getElementById("width").innerHTML = win.width;
+  document.getElementById("height").innerHTML = win.height;
 }
-function toggleKioskMode() {
-  win.toggleKioskMode();
+function resizeBigSize() {
+  win.resizeTo(712, 584);
+}
+function resizeNormalSize() {
+  win.resizeTo(512, 384);
+}
+function resizeSmallSize() {
+  win.resizeTo(312, 184);
+}
+function setResizableTrue() {
+  win.setResizable(true);
   out("result", "success");
 }
+win.on("loaded", function() {
+  win.setResizable(false);
+})
 
 </script>

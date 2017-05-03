@@ -27,34 +27,64 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
-<title>Window Show And Hide</title>
+<title>Window Set Resizable False</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="zhang xiaoyux" href="mailto:xiaoyux.zhang@intel.com">
-<link rel="help" href="http://docs.nwjs.io/en/latest/References/Window/#winshowis_show">
-<link rel="help" href="http://docs.nwjs.io/en/latest/References/Window/#winhide">
+<link rel="help" href="http://docs.nwjs.io/en/latest/References/Window/#winsetresizableresizable">
 <p>
   <strong>Test Steps:</strong>
 </p>
 <ol>
-  <li>Click 'Hide Window' button to hide window.</li>
+  <li>Click "Resize To (712, 584)" button, then click "Get Size".</li>
+  <li>Click "Resize To (512, 384)" button, then click "Get Size".</li>
+  <li>Click "Set Resizable False" button to disable resize function.</li>
+  <li>Click "Resize To (712, 584)" button, then click "Get Size".</li>
+  <li>Click "Resize To (312, 184)" button, then click "Get Size".</li>
 </ol>
 <p>
   <strong>Expected Output:</strong>
 </p>
 <ol>
-  <li>Window disappears.</li>
+  <li>Current window size is (712, 584).</li>
+  <li>Current window size is (512, 384).</li>
+  <li>"success" text is displayed.</li>
+  <li>Window size is unchanged and current window size is (512, 384).</li>
+  <li>Window size is unchanged and current window size is (512, 384).</li>
 </ol>
-<button onclick="hideWindow()">Hide Window</button>
+<button onclick="resizeBigSize()">Resize To (712, 584)</button>
+<button onclick="resizeNormalSize()">Resize To (512, 384)</button>
+<button onclick="resizeSmallSize()">Resize To (312, 184)</button>
+<button onclick="setResizableFalse()">Set Resizable False</button>
+<button onclick="showWindowSize()">Get Size</button>
+
+<div>
+Current window size is: (<span id = "width"></span>, <span id = "height"></span>)
+</div>
 <script>
 
 var win = nw.Window.get();
-function hideWindow() {
-  if(win.show() == undefined) {
-    win.hide();
-  }
-  else {
-    win.show(false);
-  }
+function out(id, msg) {
+  var h1 = document.createElement("h1");
+  h1.setAttribute("id", id);
+  h1.innerHTML = msg;
+  document.body.appendChild(h1);
+}
+function showWindowSize() {
+  document.getElementById("width").innerHTML = win.width;
+  document.getElementById("height").innerHTML = win.height;
+}
+function resizeBigSize() {
+  win.resizeTo(712, 584);
+}
+function resizeNormalSize() {
+  win.resizeTo(512, 384);
+}
+function resizeSmallSize() {
+  win.resizeTo(312, 184);
+}
+function setResizableFalse() {
+  win.setResizable(false);
+  out("result", "success");
 }
 
 </script>

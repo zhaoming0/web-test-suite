@@ -27,58 +27,30 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
-<title>Window Set Resizable</title>
+<title>Window ReloadDev</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="zhang xiaoyux" href="mailto:xiaoyux.zhang@intel.com">
-<link rel="help" href="http://docs.nwjs.io/en/latest/References/Window/#winsetresizableresizable">
+<link rel="help" href="http://docs.nwjs.io/en/latest/References/Window/#winreloaddev">
 <p>
   <strong>Test Steps:</strong>
 </p>
 <ol>
-  <li>Click "Resize To (712, 584)" button, then click "Get Size".</li>
-  <li>Click "Resize To (512, 384)" button, then click "Get Size".</li>
-  <li>Click "Set Resizable" button to disable resize function.</li>
-  <li>Click "Resize To (712, 584)" button, then click "Get Size".</li>
-  <li>Click "Resize To (312, 184)" button, then click "Get Size".</li>
+  <li>Click 'Window ReloadDev' button to reload window.</li>
 </ol>
 <p>
   <strong>Expected Output:</strong>
 </p>
 <ol>
-  <li>Window size is enlarged and current window size is (712, 584).</li>
-  <li>Window size is narrowed and current window size is (512, 384).</li>
-  <li>"Resize function is disable." text is displayed.</li>
-  <li>Window size is unchanged and current window size is (512, 384).</li>
-  <li>Window size is unchanged and current window size is (512, 384).</li>
+  <li>Window is reloaded and text "This is initial page" flickers.</li>
 </ol>
-<button onclick="resizeBigSize()">Resize To (712, 584)</button>
-<button onclick="resizeNormalSize()">Resize To (512, 384)</button>
-<button onclick="resizeSmallSize()">Resize To (312, 184)</button>
-<button onclick="setResizable(false)">Set Resizable</button>
-<button onclick="showWindowSize()">Get Size</button>
-
-<div>
-Current window size is: (<span id = "width"></span>, <span id = "height"></span>)
-<p id="demo"></p>
-</div>
+<button onclick="windowReloadDev()">Window ReloadDev</button>
+<p id="demo">This is initial page</p>
 <script>
 
 var win = nw.Window.get();
-function showWindowSize() {
-  document.getElementById("width").innerHTML = win.width;
-  document.getElementById("height").innerHTML = win.height;
+function windowReloadDev() {
+  win.reloadDev();
+  document.getElementById('demo').innerHTML = 'This page is reloaded';
 }
-function resizeBigSize() {
-  win.resizeTo(712, 584);
-}
-function resizeNormalSize() {
-  win.resizeTo(512, 384);
-}
-function resizeSmallSize() {
-  win.resizeTo(312, 184);
-}
-function setResizable(status) {
-  win.setResizable(status);
-  document.getElementById("demo").innerHTML = "Resize function is disable.";
-}
+
 </script>

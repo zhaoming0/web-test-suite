@@ -27,45 +27,39 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
-<title>Window Kiosk Mode</title>
+<title>Window Set Always On Top True</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="zhang xiaoyux" href="mailto:xiaoyux.zhang@intel.com">
-<link rel="help" href="http://docs.nwjs.io/en/latest/References/Window/#winiskioskmode">
-<link rel="help" href="http://docs.nwjs.io/en/latest/References/Window/#winenterkioskmode">
-<link rel="help" href="http://docs.nwjs.io/en/latest/References/Window/#wintogglekioskmode">
+<link rel="help" href="http://docs.nwjs.io/en/latest/References/Window/#winsetalwaysontoptop">
 <p>
   <strong>Test Steps:</strong>
 </p>
 <ol>
-  <li>Click 'Enter Kiosk' button to enter kiosk mode.</li>
-  <li>Click 'Toggle Kiosk' button to leave kiosk mode.</li>
+  <li>Click "Open Second Window" button to open second window.</li>
+  <li>Click "Close Second Window" button to close second window.</li>
+  <li>Click "Set Always On Top" button, then click "Open Second Window".</li>
 </ol>
 <p>
   <strong>Expected Output:</strong>
 </p>
 <ol>
-  <li>Window enters full screen mode.</li>
-  <li>Window toggles full screen mode and "success" is showed.</li>
+  <li>Second window is opened above the first window.</li>
+  <li>Second window is closed.</li>
+  <li>Second window is opened below the first window.</li>
 </ol>
-<button onclick="enterKioskMode()">Enter Kiosk</button>
-<button onclick="toggleKioskMode()">Toggle Kiosk</button>
+<button onclick="openSecondWindow()">Open Second Window</button>
+<button onclick="setAlwaysOnTop()">Set Always On Top</button>
 <script>
 
 var win = nw.Window.get();
-function out(id, msg) {
-  var h1 = document.createElement("h1");
-  h1.setAttribute("id", id);
-  h1.innerHTML = msg;
-  document.body.appendChild(h1);
+function setAlwaysOnTop() {
+  win.setAlwaysOnTop(true);
 }
-function enterKioskMode() {
-  if(!win.isKioskMode) {
-    win.enterKioskMode();
-  }
-}
-function toggleKioskMode() {
-  win.toggleKioskMode();
-  out("result", "success");
+function openSecondWindow() {
+  nw.Window.open("secondwindow.html", {
+    "title": "Second Window",
+    "position": "mouse"
+  });
 }
 
 </script>

@@ -27,28 +27,28 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
-<title>Window Kiosk Mode</title>
+<title>Window Leave Kiosk</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="zhang xiaoyux" href="mailto:xiaoyux.zhang@intel.com">
 <link rel="help" href="http://docs.nwjs.io/en/latest/References/Window/#winiskioskmode">
 <link rel="help" href="http://docs.nwjs.io/en/latest/References/Window/#winenterkioskmode">
-<link rel="help" href="http://docs.nwjs.io/en/latest/References/Window/#wintogglekioskmode">
+<link rel="help" href="http://docs.nwjs.io/en/latest/References/Window/#winleavekioskmode">
 <p>
   <strong>Test Steps:</strong>
 </p>
 <ol>
   <li>Click 'Enter Kiosk' button to enter kiosk mode.</li>
-  <li>Click 'Toggle Kiosk' button to leave kiosk mode.</li>
+  <li>Click 'Leave Kiosk' button to leave kiosk mode.</li>
 </ol>
 <p>
   <strong>Expected Output:</strong>
 </p>
 <ol>
   <li>Window enters full screen mode.</li>
-  <li>Window toggles full screen mode and "success" is showed.</li>
+  <li>Window leaves full screen mode and "success" is showed.</li>
 </ol>
 <button onclick="enterKioskMode()">Enter Kiosk</button>
-<button onclick="toggleKioskMode()">Toggle Kiosk</button>
+<button onclick="leaveKioskMode()">Leave Kiosk</button>
 <script>
 
 var win = nw.Window.get();
@@ -63,8 +63,8 @@ function enterKioskMode() {
     win.enterKioskMode();
   }
 }
-function toggleKioskMode() {
-  win.toggleKioskMode();
+function leaveKioskMode() {
+  win.leaveKioskMode();
   out("result", "success");
 }
 
