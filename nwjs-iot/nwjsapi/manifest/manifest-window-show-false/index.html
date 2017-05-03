@@ -41,19 +41,19 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <strong>Expected Output:</strong>
 </p>
 <ol>
-  <li>Test passes if only second app popups.</li>
+  <li>Test passes if only second window popups.</li>
 </ol>
 <script>
 
 var win = nw.Window.get();
 win.on("loaded", function() {
-  nw.Window.open("secondapp.html", {
-    "title": "Second App",
+  nw.Window.open("secondwindow.html", {
+    "title": "Second Window",
     "position": "mouse",
     "show": true 
   }, function(w) {
     setTimeout(function() {
-    w.window.document.getElementById("demo").innerHTML = "First app is invisible"}, 2000)
+    w.window.document.getElementById("demo").innerHTML = "First window is invisible"}, 2000)
   })
 })
 

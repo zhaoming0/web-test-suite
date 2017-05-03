@@ -27,50 +27,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
-<title>Manifest Window Always On Top True</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="zhang xiaoyux" href="mailto:xiaoyux.zhang@intel.com">
-<link rel="help" href="http://docs.nwjs.io/en/latest/References/Manifest%20Format/#always_on_top">
-<p>
-  <strong>Test Steps:</strong>
-</p>
-<ol>
-  <li>Click "Open Second Window" button to open second window.</li>
-  <li>Click "Open Third Window" button to open third window.</li>
-</ol>
-<p>
-  <strong>Expected Output:</strong>
-</p>
-<ol>
-  <li>Second window is opened below the first window and "success" is showed.</li>
-  <li>Third window is opened below the first window and "success" is showed.</li>
-</ol>
-<button onclick="openSecondWindow()">Open Second Window</button>
-<button onclick="openThirdWindow()">Open Third Window</button>
-<script>
-
-var win = nw.Window.get();
-function out(id, msg) {
-  var p = document.createElement("p");
-  p.setAttribute('id', id);
-  p.innerHTML = msg;
-  document.body.appendChild(p);
-}
-function openSecondWindow() {
-  nw.Window.open("secondwindow.html", {
-    "title": "Second Window",
-    "position": "mouse"
-  }, function() {
-    out("result", "success")
-  });
-}
-function openThirdWindow() {
-  nw.Window.open("thirdwindow.html", {
-    "title": "Third Window",
-    "position": "mouse"
-  }, function() {
-    out("result", "success")
-  });
-}
-
-</script>
+<p>This is third window.</p>
+<button onclick="nw.Window.get().close(true)">Close Third Window</button>
